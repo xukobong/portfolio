@@ -35,6 +35,13 @@ const projects = [
     featured: true
   },
   {
+    title: "Asterscholar",
+    description: "Grounds every sentence in peer-reviewed papers, and saves sources from the browser into the library.",
+    tags: ["Research"],
+    url: "https://www.asterscholar.com",
+    featured: true
+  },
+  {
     title: "Recoverly",
     description: "A local-first backup prototype that wraps the open-source Restic engine, so the archive stays with the owner.",
     tags: ["Backup"],
@@ -345,41 +352,34 @@ async function loadMedium() {
   }
 }
 
-function watchTimeline() {
-  const frame = document.querySelector(".tweet-frame");
-  if (!frame) return;
+function setupReach() {
+  const form = document.getElementById("reach");
+  const note = document.getElementById("reach-note");
+  if (!form || !note) return;
 
-  const reveal = () => {
-    const iframe = frame.querySelector("iframe");
-    const note = frame.querySelector(".timeline-fallback");
-    if (iframe && iframe.offsetHeight > 40) {
-      if (note) note.remove();
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (form._honey.value) return;
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    if (!name || !email || !message || !form.email.checkValidity()) {
+      note.textContent = "Add a name, a real email, and a note.";
       return;
     }
-    if (note) return;
-    frame.insertAdjacentHTML("beforeend", `
-      <div class="timeline-fallback">
-        <p>Posts from @xukobong load here when X serves the timeline.</p>
-        <a class="text-link" href="https://x.com/xukobong" target="_blank" rel="noopener noreferrer">Open @xukobong</a>
-      </div>
-    `);
-  };
 
-  const bind = () => {
-    if (window.twttr && twttr.events) {
-      twttr.events.bind("rendered", () => setTimeout(reveal, 400));
-    }
-    setTimeout(reveal, 4500);
-  };
-
-  if (window.twttr && twttr.ready) twttr.ready(bind);
-  else setTimeout(bind, 1200);
+    const subject = encodeURIComponent(`Portfolio note from ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+    window.location.href = `mailto:sgukobong@gmail.com?subject=${subject}&body=${body}`;
+    note.textContent = "Your mail app is opening with this note.";
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   setupNav();
   loadGithub();
+  setupReach();
   loadMedium();
-  watchTimeline();
 });

@@ -1,0 +1,34 @@
+# xukobong
+
+> S. Ukobong (xukobong) is a developer, Web3 builder, and trader. The work covers software, blockchain technology, and markets.
+
+Portfolio: https://xukobong.github.io/portfolio/
+
+## Products
+
+- [VennURL](https://vennurl.com): Inspect a link’s destination, strip common tracking, and share it with context.
+- [Way2Sign](https://way2sign.com): Sign, fill, and handle PDFs in the browser, including scan, compress, and OCR.
+- [Tabmeet](https://www.tabmeet.com): Browser extension that summarizes and compares selected tabs.
+- [Stackduck](https://stackduck.app): Project health, errors, users, and uptime in one portfolio.
+- [icebloop](https://icebloop.com): Icebreakers, live polls, and idea voting for Zoom, Google Meet, and Teams.
+- [Asterscholar](https://www.asterscholar.com): Grounds every sentence in peer-reviewed papers, and saves sources from the browser into the library.
+
+## Currently building
+
+- [ResearchPals](https://www.researchpals.com): The product in progress. The public site is up while the work continues.
+
+## Also building
+
+- [Recoverly](https://github.com/xukobong/sme-cloud-backup): Local-first backup prototype wrapping Restic.
+- [Fieldshift](https://github.com/xukobong/fieldshift): Crop-rotation decision support using NASA Earth data.
+- [NodeDots](https://github.com/xukobong/nodedots): A clearer code review before a merge.
+- [Snapsme](https://github.com/xukobong/snapsme): Lightweight expense tracker for small teams.
+- [Enrollocus](https://github.com/xukobong/enrollocus): Moodle plugin for a single view of enrollment.
+
+## Profiles
+
+- [GitHub](https://github.com/xukobong)
+- [X](https://x.com/xukobong)
+- [Medium](https://medium.com/@xukobong)
+- [Telegram](https://t.me/xukobong)
+- [Ko-fi](https://ko-fi.com/xukobong)
