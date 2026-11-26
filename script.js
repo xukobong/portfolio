@@ -233,6 +233,33 @@ function setupNav() {
   setCurrent(document.getElementById(initial) ? initial : "home");
 }
 
+function setupDiscordHandle() {
+  const button = document.querySelector("[data-discord-handle]");
+  const status = document.getElementById("discord-copy-status");
+  const label = button?.querySelector("span");
+  if (!button || !label || !status) return;
+
+  const handle = button.dataset.discordHandle;
+  let resetTimer;
+
+  button.addEventListener("click", async () => {
+    if (!navigator.clipboard?.writeText) {
+      status.textContent = `Copy unavailable. Discord handle: ${handle}.`;
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(handle);
+      label.textContent = "Copied";
+      status.textContent = `Copied Discord handle ${handle}.`;
+      window.clearTimeout(resetTimer);
+      resetTimer = window.setTimeout(() => { label.textContent = handle; }, 1800);
+    } catch (error) {
+      status.textContent = `Could not copy. Discord handle: ${handle}.`;
+    }
+  });
+}
+
 const MEDIUM_PROFILE = "https://medium.com/@xukobong";
 const MEDIUM_FEED = "https://medium.com/feed/@xukobong";
 const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/saviourukobong@gmail.com";
@@ -461,6 +488,7 @@ function setupNewsletter() {
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   setupNav();
+  setupDiscordHandle();
   loadGithub();
   setupReach();
   setupNewsletter();
