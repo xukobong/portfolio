@@ -33,7 +33,7 @@ only after they confirm the email link.
 1. Verify a sending domain in Resend and create a segment for portfolio updates.
 2. Create a Resend API key with permission to send emails and manage contacts/segments.
 3. In the Vercel project connected to this repository, add these Production environment
-   variables:
+   variables from `.env.example`:
 
    - `RESEND_API_KEY` — keep this secret in Vercel; never put it in browser code.
    - `RESEND_SEGMENT_ID` — the ID of the newsletter segment.
@@ -47,6 +47,9 @@ only after they confirm the email link.
 4. Set the `newsletter-api-url` meta tag in `index.html` to the Vercel project URL. It is
    already set to `https://xukobong.vercel.app`; pushes to the connected production branch
    deploy the site and API together.
+
+`.env.example` contains placeholders only. Add actual credentials in Vercel's Production
+environment settings and keep local `.env` files out of Git.
 
 The confirmation link expires after 24 hours. Resend Broadcasts can then be sent to the
 segment from the Resend dashboard; include Resend's `{{{RESEND_UNSUBSCRIBE_URL}}}` in

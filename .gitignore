@@ -1,0 +1,4 @@
+# Local environment values must stay out of version control.
+.env
+.env.*
+!.env.example
