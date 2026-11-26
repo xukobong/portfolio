@@ -8,7 +8,8 @@
   <meta name="author" content="S. Ukobong">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-  <link rel="canonical" href="https://xukobong.github.io/portfolio/">
+  <meta name="newsletter-api-url" content="https://xukobong.vercel.app">
+  <link rel="canonical" href="https://xukobong.vercel.app/">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -20,11 +21,11 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
   <meta property="og:site_name" content="xukobong">
-  <meta property="og:url" content="https://xukobong.github.io/portfolio/">
+  <meta property="og:url" content="https://xukobong.vercel.app/">
   <meta property="og:title" content="xukobong — Developer, Web3 & Trader">
   <meta property="og:description" content="S. Ukobong builds software, works in blockchain, and trades. Asterscholar, VennURL, Way2Sign, Tabmeet, Stackduck, and icebloop.">
-  <meta property="og:image" content="https://xukobong.github.io/portfolio/og.jpg">
-  <meta property="og:image:secure_url" content="https://xukobong.github.io/portfolio/og.jpg">
+  <meta property="og:image" content="https://xukobong.vercel.app/og.jpg">
+  <meta property="og:image:secure_url" content="https://xukobong.vercel.app/og.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -34,7 +35,7 @@
   <meta name="twitter:creator" content="@xukobong">
   <meta name="twitter:title" content="xukobong — Developer, Web3 & Trader">
   <meta name="twitter:description" content="Developer, Web3 builder, and trader. Code, chain, and the chart.">
-  <meta name="twitter:image" content="https://xukobong.github.io/portfolio/og.jpg">
+  <meta name="twitter:image" content="https://xukobong.vercel.app/og.jpg">
   <meta name="twitter:image:alt" content="xukobong — a developer, Web3 builder, and trader. Code, chain, and the chart.">
   <script type="application/ld+json">
   {
@@ -42,13 +43,13 @@
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://xukobong.github.io/portfolio/#person",
+        "@id": "https://xukobong.vercel.app/#person",
         "name": "S. Ukobong",
         "alternateName": "xukobong",
         "jobTitle": "Developer, Web3 builder, and trader",
         "description": "Developer working across software, blockchain technology, and markets.",
-        "url": "https://xukobong.github.io/portfolio/",
-        "image": "https://xukobong.github.io/portfolio/avatar.webp",
+        "url": "https://xukobong.vercel.app/",
+        "image": "https://xukobong.vercel.app/avatar.webp",
         "sameAs": [
           "https://github.com/xukobong",
           "https://x.com/xukobong",
@@ -60,12 +61,12 @@
       },
       {
         "@type": "WebSite",
-        "@id": "https://xukobong.github.io/portfolio/#website",
+        "@id": "https://xukobong.vercel.app/#website",
         "name": "xukobong",
-        "url": "https://xukobong.github.io/portfolio/",
+        "url": "https://xukobong.vercel.app/",
         "description": "Portfolio of S. Ukobong, a developer, Web3 builder, and trader.",
         "inLanguage": "en",
-        "publisher": { "@id": "https://xukobong.github.io/portfolio/#person" }
+        "publisher": { "@id": "https://xukobong.vercel.app/#person" }
       },
       {
         "@type": "ItemList",
@@ -248,16 +249,22 @@
           </div>
         </div>
         <p class="section-lead">Stories from Medium, refreshed when this page opens.</p>
-        <div class="feed-grid">
-          <div class="feed-column">
-            <div class="section-head">
-              <h3>On Medium</h3>
-              <a class="text-link" href="https://medium.com/@xukobong" target="_blank" rel="noopener noreferrer">medium.com/@xukobong</a>
-            </div>
-            <div id="medium-feed" class="feed-list" aria-live="polite">
-              <p class="feed-status">Loading stories…</p>
-            </div>
+        <div id="medium-feed" class="feed-list" aria-live="polite">
+          <p class="feed-status">Loading stories…</p>
+        </div>
+        <div class="newsletter" aria-labelledby="newsletter-title">
+          <div class="newsletter-copy">
+            <p class="kicker">Occasional notes</p>
+            <h3 id="newsletter-title">Good things, when they’re ready.</h3>
+            <p>Occasional emails about new writing and projects. Unsubscribe anytime.</p>
           </div>
+          <form class="newsletter-form" id="newsletter-form">
+            <label class="visually-hidden" for="newsletter-email">Your email address</label>
+            <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254">
+            <input class="visually-hidden" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-secondary" type="submit">Subscribe</button>
+          </form>
+          <p class="newsletter-note" id="newsletter-note" role="status">By subscribing, you agree to receive occasional updates.</p>
         </div>
       </div>
     </section>
@@ -295,7 +302,7 @@
           </a>
         </div>
         </div>
-        <form class="reach" id="reach" novalidate>
+        <form class="reach" id="reach" action="https://formsubmit.co/saviourukobong@gmail.com" method="POST">
           <label>Name
             <input name="name" type="text" autocomplete="name" required maxlength="80">
           </label>
@@ -305,6 +312,7 @@
           <label>Note
             <textarea name="message" required maxlength="2000" rows="4"></textarea>
           </label>
+          <input type="hidden" name="_subject" value="New portfolio contact note">
           <input class="visually-hidden" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-primary" type="submit">Send</button>
           <p class="reach-note" id="reach-note" role="status"></p>

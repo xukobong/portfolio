@@ -235,6 +235,7 @@ function setupNav() {
 
 const MEDIUM_PROFILE = "https://medium.com/@xukobong";
 const MEDIUM_FEED = "https://medium.com/feed/@xukobong";
+const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/saviourukobong@gmail.com";
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (ch) => ({
@@ -369,10 +370,91 @@ function setupReach() {
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio note from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
-    window.location.href = `mailto:sgukobong@gmail.com?subject=${subject}&body=${body}`;
-    note.textContent = "Your mail app is opening with this note.";
+    const button = form.querySelector('button[type="submit"]');
+    const originalLabel = button.textContent;
+    const payload = Object.fromEntries(new FormData(form).entries());
+    payload._subject = `Portfolio note from ${name}`;
+    payload._replyto = email;
+
+    button.disabled = true;
+    button.textContent = "Sending…";
+    note.textContent = "Sending your note…";
+
+    try {
+      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+      const accepted = result.success === true || result.success === "true";
+
+      if (!response.ok || !accepted) {
+        throw new Error(result.message || "The form service could not accept your note.");
+      }
+
+      form.reset();
+      note.textContent = "Your note has been sent. Thanks for reaching out.";
+    } catch (error) {
+      note.textContent = "Your note couldn’t be sent. Please try again or email saviourukobong@gmail.com.";
+    } finally {
+      button.disabled = false;
+      button.textContent = originalLabel;
+    }
+  });
+}
+
+function setupNewsletter() {
+  const form = document.getElementById("newsletter-form");
+  const note = document.getElementById("newsletter-note");
+  const apiBase = document.querySelector('meta[name="newsletter-api-url"]')?.content.trim();
+  if (!form || !note) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const emailField = form.elements.namedItem("email");
+    const honeypot = form.elements.namedItem("website");
+    if (honeypot?.value) return;
+    if (!emailField.value.trim() || !emailField.checkValidity()) {
+      note.textContent = "Enter a valid email address.";
+      emailField.focus();
+      return;
+    }
+    if (!apiBase) {
+      note.textContent = "Newsletter signup is being set up. Please check back soon.";
+      return;
+    }
+
+    const button = form.querySelector('button[type="submit"]');
+    const originalLabel = button.textContent;
+    button.disabled = true;
+    button.textContent = "Sending…";
+    note.textContent = "Sending a confirmation email…";
+
+    try {
+      const endpoint = new URL("/api/newsletter/subscribe", apiBase);
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email: emailField.value.trim(), website: honeypot?.value || "" })
+      });
+      const result = await response.json();
+      if (!response.ok || result.ok !== true) {
+        throw new Error(result.message || "Signup failed.");
+      }
+
+      form.reset();
+      note.textContent = "Check your inbox for a confirmation email to finish subscribing.";
+    } catch (error) {
+      note.textContent = "Signup couldn’t be completed. Please try again later.";
+    } finally {
+      button.disabled = false;
+      button.textContent = originalLabel;
+    }
   });
 }
 
@@ -381,5 +463,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNav();
   loadGithub();
   setupReach();
+  setupNewsletter();
   loadMedium();
 });

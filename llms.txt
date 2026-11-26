@@ -2,7 +2,7 @@
 
 > S. Ukobong (xukobong) is a developer, Web3 builder, and trader. The work covers software, blockchain technology, and markets.
 
-Portfolio: https://xukobong.github.io/portfolio/
+Portfolio: https://xukobong.vercel.app/
 
 ## Products
 
