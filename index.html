@@ -1,190 +1,216 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Saviour Ukobong - Portfolio</title>
-    <link rel="stylesheet" href="./style.css"/>
-    <script src="./script.js"></script>
-  </head>
-  <body>
-    <!-- Navigation Bar -->
-    <nav>
-      <div id="home">
-        <div class="profile_name">
-            Saviour Ukobong
-          <div class="contact_info">
-            <img src="html_finalprojimages/envelope.png" alt="https://icons8.com/icon/124377/circled-envelope"/>
-          sgukobong@gmail.com
-        </div>
-        <div style="clear:both;"></div>
-        <div class="contact_info">
-          <img src="html_finalprojimages/phone.png" alt="https://icons8.com/icon/124377/circled-envelope"/>
-          +2348069107294
-
-        </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xukobong — Developer & Web3 Builder</title>
+  <meta name="description" content="Saviour Ukobong (xukobong) builds practical tools, offline AI, and Web3 software. Shipping in public.">
+  <meta property="og:title" content="xukobong — Developer & Web3 Builder">
+  <meta property="og:description" content="Practical tools and offline AI for constrained environments. Shipping in public.">
+  <meta property="og:image" content="banner.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">
+      <img src="profile.png" alt="xukobong" class="nav-avatar">
+      <span>xukobong</span>
     </div>
-        <div class="topdiv">
-          <a class="topmenu" href="#about-me">About Me</a>
-          <!-- Add the links for Skills, Projects and Recommendation here -->
-          <a class="topmenu" href="#skills">Skills</a>
-          <a class="topmenu" href="#projects">Projects</a>
-          <a class="topmenu" href="#recommendations">Recommendations</a>
-        </div>
-      </div>    
-    </nav>
-
-    <!-- About Me -->
-    <section id="about-me" class="container">
-      <div>
-        <img src="https://pixabay.com/images/download/cat-5646889_1920.jpg" class="profile_image"/>
-      </div>
-
-      <div>
-          <h1>
-            Hi, I'm Saviour Ukobong! <img src="html_finalprojimages/waving-hand.png" width="60px"/>
-          </h1>
-          <p>
-            I am a full stack developer with 2 years of experience in both application and presentation layers.
-            I have worked on applications and microservices deployed on IBM Cloud. 
-            I am an avid user of IBM Watson Services and have worked on Watson Assistant, NLU, Sentiment analyzer to name a few.
-          </p>
-      </div>
-    </section>
-              
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div style="clear:both;"></div>
-
-      <div class="all_skills">
-        <div class="skill">
-          <img src="html_finalprojimages/html5.png"/>
-          <h6>HTML</h6>
-          <p>2 years experience</p>
-        </div>  
-
-        <div class="skill">
-          <img src="html_finalprojimages/js.jpeg"/>
-          <h6>JavaScript</h6>
-          <p>3 years experience</p>
-        </div>  
-
-        <!-- Add more skills here -->
-        <div class="skill">
-            <img src="html_finalprojimages/java.png"/>
-            <h6>Java</h6>
-            <p>2 years experience</p>
-          </div>  
-  
-          <div class="skill">
-            <img src="html_finalprojimages/react.png"/>
-            <h6>React</h6>
-            <p>3 years experience</p>
-          </div> 
-
-          <div class="skill">
-            <img src="html_finalprojimages/node.png"/>
-            <h6>Node.js</h6>
-            <p>2 years experience</p>
-          </div>  
-  
-          <div class="skill">
-            <img src="html_finalprojimages/CSS3.png"/>
-            <h6>CSS</h6>
-            <p>3 years experience</p>
-          </div>  
-
-      </div>
-    </section>
-          
-    <!-- Projects -->
-    <section class="projects" id="projects">
-      <h2>
-        Projects
-      </h2>
-      <div style="clear:both;"></div>
-
-        <div id="projects-container" class="projects-container">
-          <div class="project-card">
-            <h3>Chatbot</h3>
-            <ul>
-              <li>Developed a secure website integrated with chatbot for an automobile client using HTML, CSS, JavaScript and IBM Watson Assistant</li>
-            </ul>
-          </div>
-          <hr>
-          <div class="project-card">
-            <h3>Sentiment Analyzer</h3>
-            <ul>
-              <li>Developed and deployed a sentiment analyzer for the box reviews section of an eCommerce platform using IBM NLU</li>
-            </ul>
-          </div>
-          <hr>
-          <div class="project-card">
-            <h3>Fashion Website</h3>
-            <ul>
-              <li>Created a styled multi-page website for a new player in the fashion industry and integrated it with a shopping cart, using stripe for payment gateway</li>
-            </ul>
-          </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#github">GitHub</a>
+      <a href="#skills">Skills</a>
+      <a href="#posts">Posts</a>
+      <a href="#contact">Contact</a>
     </div>
-    </section>
-    <div style="clear:both;"></div>
+  </nav>
 
-    <!-- Recommendations -->
-    <section id="recommendations">
-      <h2>Recommendations</h2>
-      <div style="clear:both;"></div>
-      <div class="all_recommendations" id="all_recommendations">
-        <div class="recommendation">
-          <span>&#8220;</span>
-          Jane is a very quick learner and quickly grasps key concepts of Web development. 
-          She got a great attitude & she is an excellent team player. 
-          She has a curious mind and asks the right question. 
-          She takes initiative within a team and has potentials to lead the team.
-          <span>&#8221;</span>
-        </div>
-        <div class="recommendation">
-          <span>&#8220;</span>
-          Working with Jane has been an awesome experience. 
-          She is highly knowledgable and always goes the extra step to make sure everything is right. 
-          For any future projects that need her expertise I would definitely want to work with her again.
-          <span>&#8221;</span>
-        </div>
-        <div class="recommendation">
-          <span>&#8220;</span>
-          I had worked along with Jane during the initial phase of our venture which needed Web development. 
-          She is a committed resource who has in depth knowledge about the domain. 
-          She will be an asset for any organisation! 
-          <span>&#8221;</span>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>xukobong</h1>
+      <p class="tagline">Developer & Web3 Builder</p>
+      <p class="hero-sub">Building practical tools and offline AI for constrained environments. Shipping in public. One small tool at a time.</p>
+      <div class="pillars">
+        <span class="pillar">&lt;/&gt; Build</span>
+        <span class="pillar">⬡ Web3</span>
+        <span class="pillar">▲ Ship</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://x.com/xukobong" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on X</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="avatar.png" alt="xukobong pixel avatar" class="hero-avatar">
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About</h2>
+      <div class="about-grid">
+        <img src="profile.png" alt="xukobong" class="about-img">
+        <div>
+          <p>I’m <strong>S. Ukobong</strong> (xukobong) — a developer and Web3 builder focused on practical tools that work even when the cloud doesn’t.</p>
+          <p>I build offline AI and software for constrained environments, where every byte, watt, and millisecond matters. Constraints aren’t a limitation; they’re the best design teacher.</p>
+          <p>I ship in public, share the process (bugs included), and connect with other builders, indie hackers, and founders who are figuring it out as they go.</p>
+          <p class="highlight">Decentralized, yet 100% in control.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Recommendation Form -->
-    <section id="contact">
-      <div class="flex_center">
-        <fieldset>
-          <legend class="introduction">Leave a Recommendation</legend>          
-          <input type="text" placeholder="Name (Optional)"> <br/>
-          <textarea id="new_recommendation" cols="500" rows="10" placeholder="Message"></textarea>
-          <div class="flex_center">
-            <button id="recommend_btn" onclick="addRecommendation()">Submit</button>
+  <section id="projects" class="section alt">
+    <div class="container">
+      <h2>Projects</h2>
+      <p class="section-lead">Recent work on GitHub. Open any card to read the repo.</p>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Populated by JS or static -->
+      </div>
+    </div>
+  </section>
+
+  <section id="github" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>GitHub</h2>
+        <a class="text-link" href="https://github.com/xukobong" target="_blank" rel="noopener noreferrer">github.com/xukobong</a>
+      </div>
+      <p class="section-lead">A year of commits, in one glance.</p>
+      <div class="gh-stats" id="gh-stats">
+        <div class="gh-stat">
+          <span class="gh-num" id="gh-contrib">—</span>
+          <span>contributions this year</span>
+        </div>
+        <div class="gh-stat">
+          <span class="gh-num" id="gh-streak">—</span>
+          <span id="gh-streak-label">best streak</span>
+        </div>
+        <div class="gh-stat">
+          <span class="gh-num" id="gh-repos">—</span>
+          <span>public repos</span>
+        </div>
+      </div>
+      <div class="heatmap-card">
+        <div class="heatmap-scroll">
+          <div class="heatmap" id="heatmap" role="img" aria-label="GitHub contributions over the last year"></div>
+        </div>
+        <div class="heat-legend" aria-hidden="true">
+          <span>Less</span>
+          <span class="heat-cell" data-level="0"></span>
+          <span class="heat-cell" data-level="1"></span>
+          <span class="heat-cell" data-level="2"></span>
+          <span class="heat-cell" data-level="3"></span>
+          <span class="heat-cell" data-level="4"></span>
+          <span>More</span>
+        </div>
+        <p class="gh-range" id="gh-range">Loading contributions…</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section alt">
+    <div class="container">
+      <h2>Skills & Focus</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Local-first software</h3>
+          <p>Python, TypeScript, and JavaScript tools that keep the data on the machine that owns it.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Offline AI</h3>
+          <p>Models and workflows that still run when the cloud is slow, expensive, or absent.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Web3</h3>
+          <p>Solidity and app interfaces where the user keeps the keys and the control.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Product surfaces</h3>
+          <p>Admin tools, learning plugins, and small trackers shipped where people already work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="posts" class="section">
+    <div class="container">
+      <h2>Posts</h2>
+      <p class="section-lead">Latest notes from X and stories from Medium. Both refresh when this page opens.</p>
+      <div class="feed-grid">
+        <div class="feed-column">
+          <div class="section-head">
+            <h3>On X</h3>
+            <a class="text-link" href="https://x.com/xukobong" target="_blank" rel="noopener noreferrer">@xukobong</a>
           </div>
-        </fieldset>
+          <div class="tweet-frame">
+            <a class="twitter-timeline" data-height="460" data-tweet-limit="4" data-chrome="noheader nofooter noborders transparent" data-dnt="true" href="https://x.com/xukobong">Latest posts from @xukobong</a>
+          </div>
+        </div>
+        <div class="feed-column">
+          <div class="section-head">
+            <h3>On Medium</h3>
+            <a class="text-link" href="https://medium.com/@xukobong" target="_blank" rel="noopener noreferrer">medium.com/@xukobong</a>
+          </div>
+          <div id="medium-feed" class="feed-list" aria-live="polite">
+            <p class="feed-status">Loading stories…</p>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="iconbutton">
-      <a href="#home">
-        <!--Add the code here for the logo to appear and the icon to be actionable-->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="63px">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+  <section id="contact" class="section alt">
+    <div class="container">
+      <h2>Let’s Connect</h2>
+      <p class="section-lead">Building something? Drop a hello. Always open to connecting with other builders.</p>
+      <div class="contact-links">
+        <a href="https://x.com/xukobong" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.726-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </span>
+          <span>@xukobong</span>
         </a>
+        <a href="https://t.me/xukobong" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.04 15.3 8.7 19.8c.46 0 .66-.2.9-.44l2.16-2.07 4.48 3.29c.82.45 1.4.21 1.62-.76l2.94-13.86c.26-1.22-.44-1.7-1.24-1.4L3.3 9.48c-1.18.46-1.16 1.12-.2 1.42l4.4 1.37 10.22-6.44c.48-.3.92-.13.56.17L9.04 15.3z"/></svg>
+          </span>
+          <span>Telegram</span>
+        </a>
+        <a href="https://github.com/xukobong" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+          </span>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linktr.ee/xukobong" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </span>
+          <span>Linktree</span>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <div class="popup" id="popup" class="flex_center">
-      <img src="html_finalprojimages/checkmark--outline.svg"/>
-      <h3>hank you for leaving a recommendation!</h3>
-      <button onclick="showPopup(false)">Ok</button>
-    </div>
-  </body>
+  <footer>
+    <p>© 2026 xukobong · Built with HTML, CSS & JS · Shipping in public</p>
+    <p class="footer-links">
+      <a href="https://github.com/xukobong" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://t.me/xukobong" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://x.com/xukobong" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://medium.com/@xukobong" target="_blank" rel="noopener noreferrer">Medium</a>
+    </p>
+  </footer>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="script.js"></script>
+</body>
 </html>
