@@ -4,42 +4,46 @@ const projects = [
     description: "Inspect a link’s destination, strip common tracking, and share it with context. No account for a basic check.",
     tags: ["Web"],
     url: "https://vennurl.com",
-    featured: true
+    caseStudy: true,
+    image: "project-vennurl.png",
+    imageAlt: "VennURL product visual showing a link review card",
+    role: "Product design and development",
+    outcome: "A basic link check works without an account, with destination context and tracking cleanup before sharing."
   },
   {
     title: "Way2Sign",
     description: "Sign, fill, and handle PDFs in the browser. Scan, compress, and OCR without a required account.",
     tags: ["Documents"],
     url: "https://way2sign.com",
-    featured: true
+    caseStudy: true,
+    image: "project-way2sign.png",
+    imageAlt: "Way2Sign product artwork for its free browser-based PDF tools",
+    role: "Product design and development",
+    outcome: "19 free document tools run in the browser; the core workflow needs no account and adds no watermark."
   },
   {
     title: "Tabmeet",
     description: "A browser extension that summarizes and compares the tabs you choose, then points back at the original sources.",
     tags: ["Browser"],
     url: "https://www.tabmeet.com",
-    featured: true
   },
   {
     title: "Stackduck",
     description: "Project health, errors, users, and uptime for every app, from one portfolio.",
     tags: ["Dev tools"],
     url: "https://stackduck.app",
-    featured: true
   },
   {
     title: "icebloop",
     description: "Icebreakers, live polls, and idea voting for Zoom, Meet, and Teams. No install for participants.",
     tags: ["Meetings"],
     url: "https://icebloop.com",
-    featured: true
   },
   {
     title: "Asterscholar",
     description: "Grounds every sentence in peer-reviewed papers, and saves sources from the browser into the library.",
     tags: ["Research"],
     url: "https://www.asterscholar.com",
-    featured: true
   },
   {
     title: "Recoverly",
@@ -75,6 +79,30 @@ const projects = [
 
 function projectCard(project) {
   const label = project.url.includes("github.com") ? "View repository" : "Open site";
+  if (project.caseStudy) {
+    return `
+      <article class="case-study-card">
+        <div class="case-study-visual">
+          <img src="${project.image}" alt="${project.imageAlt}" loading="lazy" decoding="async">
+          <iframe src="${project.url}" title="${project.title} live landing page preview" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin" tabindex="-1" aria-hidden="true"></iframe>
+          <a class="case-preview-open" href="${project.url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${project.title} in a new tab"></a>
+          <span class="case-preview-status">Loading live preview</span>
+        </div>
+        <div class="case-study-copy">
+          <div class="case-study-heading">
+            <div><p class="kicker">Case study</p><h3><a href="${project.url}" target="_blank" rel="noopener noreferrer">${project.title}</a></h3></div>
+            <span class="tag">${project.tags[0]}</span>
+          </div>
+          <p class="case-study-description">${project.description}</p>
+          <dl class="case-study-facts">
+            <div><dt>Role</dt><dd>${project.role}</dd></div>
+            <div><dt>Outcome</dt><dd>${project.outcome}</dd></div>
+          </dl>
+          <a class="case-study-link" href="${project.url}" target="_blank" rel="noopener noreferrer">${label} <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    `;
+  }
   return `
     <a class="project-card" href="${project.url}" target="_blank" rel="noopener noreferrer">
       <h3>${project.title}</h3>
@@ -88,8 +116,30 @@ function projectCard(project) {
 function renderProjects() {
   const featured = document.getElementById("featured-grid");
   const rest = document.getElementById("projects-grid");
-  if (featured) featured.innerHTML = projects.filter((project) => project.featured).map(projectCard).join("");
-  if (rest) rest.innerHTML = projects.filter((project) => !project.featured).map(projectCard).join("");
+  if (featured) featured.innerHTML = projects.filter((project) => project.caseStudy).map(projectCard).join("");
+  if (rest) rest.innerHTML = projects.filter((project) => !project.caseStudy).map(projectCard).join("");
+}
+
+function setupLivePreviews() {
+  document.querySelectorAll(".case-study-visual").forEach((preview) => {
+    const frame = preview.querySelector("iframe");
+    const status = preview.querySelector(".case-preview-status");
+    if (!frame || !status) return;
+
+    frame.addEventListener("load", () => {
+      try {
+        if (frame.contentWindow.location.href === "about:blank") {
+          preview.classList.add("preview-fallback");
+          status.textContent = "Product image · open full site";
+          return;
+        }
+      } catch (error) {
+        // A loaded cross-origin page correctly blocks the parent from reading its URL.
+      }
+      preview.classList.add("preview-live");
+      status.textContent = "Live preview · open full site";
+    });
+  });
 }
 
 function streaks(days) {
@@ -487,6 +537,7 @@ function setupNewsletter() {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
+  setupLivePreviews();
   setupNav();
   setupDiscordHandle();
   loadGithub();
