@@ -1,56 +1,88 @@
 const projects = [
   {
+    title: "VennURL",
+    description: "Inspect a link’s destination, strip common tracking, and share it with context. No account for a basic check.",
+    tags: ["Web"],
+    url: "https://vennurl.com",
+    featured: true
+  },
+  {
+    title: "Way2Sign",
+    description: "Sign, fill, and handle PDFs in the browser. Scan, compress, and OCR without a required account.",
+    tags: ["Documents"],
+    url: "https://way2sign.com",
+    featured: true
+  },
+  {
+    title: "Tabmeet",
+    description: "A browser extension that summarizes and compares the tabs you choose, then points back at the original sources.",
+    tags: ["Browser"],
+    url: "https://www.tabmeet.com",
+    featured: true
+  },
+  {
+    title: "Stackduck",
+    description: "Project health, errors, users, and uptime for every app, from one portfolio.",
+    tags: ["Dev tools"],
+    url: "https://stackduck.app",
+    featured: true
+  },
+  {
+    title: "icebloop",
+    description: "Icebreakers, live polls, and idea voting for Zoom, Meet, and Teams. No install for participants.",
+    tags: ["Meetings"],
+    url: "https://icebloop.com",
+    featured: true
+  },
+  {
     title: "Recoverly",
     description: "A local-first backup prototype that wraps the open-source Restic engine, so the archive stays with the owner.",
-    tags: ["Python", "Local-first", "Backup"],
+    tags: ["Backup"],
     url: "https://github.com/xukobong/sme-cloud-backup"
   },
   {
     title: "Fieldshift",
     description: "Decision support that helps farmers explore crop-rotation strategies using NASA Earth data.",
-    tags: ["Python", "Data", "Agriculture"],
+    tags: ["Data"],
     url: "https://github.com/xukobong/fieldshift"
-  },
-  {
-    title: "Stackduck",
-    description: "A backend monitoring and admin platform for developers running more than one project.",
-    tags: ["Monitoring", "Admin"],
-    url: "https://github.com/xukobong/stackduck"
   },
   {
     title: "NodeDots",
     description: "A clearer review before you merge. The first focus is the code itself, not just the pull-request description.",
-    tags: ["TypeScript", "Code review"],
+    tags: ["Code review"],
     url: "https://github.com/xukobong/nodedots"
   },
   {
     title: "Snapsme",
     description: "A lightweight expense tracker for small teams. Snap a photo or send a voice note and keep the record.",
-    tags: ["JavaScript", "Local-first"],
+    tags: ["Finance"],
     url: "https://github.com/xukobong/snapsme"
   },
   {
     title: "Enrollocus",
     description: "A Moodle plugin that gives administrators, teachers, and stakeholders one view of enrollment.",
-    tags: ["PHP", "Education"],
+    tags: ["Education"],
     url: "https://github.com/xukobong/enrollocus"
   }
 ];
 
-function renderProjects() {
-  const container = document.getElementById("projects-grid");
-  if (!container) return;
-
-  container.innerHTML = projects.map(p => `
-    <a class="project-card" href="${p.url}" target="_blank" rel="noopener noreferrer">
-      <h3>${p.title}</h3>
-      <p>${p.description}</p>
-      <div class="project-tags">
-        ${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}
-      </div>
-      <span class="project-link">View repository</span>
+function projectCard(project) {
+  const label = project.url.includes("github.com") ? "View repository" : "Open site";
+  return `
+    <a class="project-card" href="${project.url}" target="_blank" rel="noopener noreferrer">
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+      <span class="tag">${project.tags[0]}</span>
+      <span class="visually-hidden">${label}</span>
     </a>
-  `).join("");
+  `;
+}
+
+function renderProjects() {
+  const featured = document.getElementById("featured-grid");
+  const rest = document.getElementById("projects-grid");
+  if (featured) featured.innerHTML = projects.filter((project) => project.featured).map(projectCard).join("");
+  if (rest) rest.innerHTML = projects.filter((project) => !project.featured).map(projectCard).join("");
 }
 
 function streaks(days) {
@@ -167,6 +199,31 @@ function setupNav() {
       toggle.setAttribute("aria-label", "Open menu");
     });
   });
+
+  const anchors = [...links.querySelectorAll("a")];
+  const sections = anchors
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  const setCurrent = (id) => {
+    links.querySelectorAll("a").forEach((link) => {
+      if (link.getAttribute("href") === `#${id}`) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setCurrent(visible.target.id);
+    }, { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.2, 0.6] });
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  const initial = (location.hash || "#home").replace("#", "");
+  setCurrent(document.getElementById(initial) ? initial : "home");
 }
 
 const MEDIUM_PROFILE = "https://medium.com/@xukobong";
